@@ -1,4 +1,4 @@
-const debug = require('debug')('mcsets-rest')
+const debug = require('debug')('mcsets-js-sdk-client')
 const fetch = require('node-fetch')
 
 const constants = require('./constants')
