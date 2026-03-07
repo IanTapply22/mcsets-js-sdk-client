@@ -6,9 +6,9 @@ declare module 'mcsets-js-sdk-client' {
   }
 
   export class MCSetsAPI {
-    constructor(authSource: string, platform: 'base' | 'setstore' | 'enterprise', options?: Options)
+    constructor(apiKey: string | null, platform: 'base' | 'setstore' | 'enterprise', options?: Options)
 
-    static from(authSource: string, platform: 'base' | 'setstore' | 'enterprise', options?: Options): BaseAPI | SetStoreAPI | EnterpriseAPI
+    static from(apiKey: string | null, platform: 'base' | 'setstore' | 'enterprise', options?: Options): BaseAPI | SetStoreAPI | EnterpriseAPI
   }
 
   export class BaseAPI extends MCSetsAPI {

@@ -4,7 +4,7 @@ const fetch = require('node-fetch')
 const constants = require('./constants')
 
 module.exports = class Rest {
-  constructor (authSource, platform = 'base', options = {}) {
+  constructor (apiKey, platform = 'base', options = {}) {
     this.options = options
     this.platform = platform
     const hostEntry = constants[platform] || constants.base
@@ -14,20 +14,20 @@ module.exports = class Rest {
 
     if (platform === 'enterprise') {
       this.getAuth = async () => {
-        if (!authSource) throw new Error('Enterprise API requires an API key')
-        if (typeof authSource === 'string') return ['Authorization', `Bearer ${authSource}`]
-        if (typeof authSource.getKey === 'function') {
-          const key = await authSource.getKey()
+        if (!apiKey) throw new Error('Enterprise API requires an API key')
+        if (typeof apiKey === 'string') return ['Authorization', `Bearer ${apiKey}`]
+        if (typeof apiKey.getKey === 'function') {
+          const key = await apiKey.getKey()
           return ['Authorization', `Bearer ${key}`]
         }
         throw new Error('Unsupported authSource for enterprise platform')
       }
     } else if (platform === 'setstore') {
       this.getAuth = async () => {
-        if (!authSource) throw new Error('SetStore API requires an API key')
-        if (typeof authSource === 'string') return ['X-API-Key', authSource]
-        if (typeof authSource.getKey === 'function') {
-          const key = await authSource.getKey()
+        if (!apiKey) throw new Error('SetStore API requires an API key')
+        if (typeof apiKey === 'string') return ['X-API-Key', apiKey]
+        if (typeof apiKey.getKey === 'function') {
+          const key = await apiKey.getKey()
           return ['X-API-Key', key]
         }
         throw new Error('Unsupported authSource for setstore platform')
