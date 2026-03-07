@@ -16,20 +16,12 @@ module.exports = class Rest {
       this.getAuth = async () => {
         if (!apiKey) throw new Error('Enterprise API requires an API key')
         if (typeof apiKey === 'string') return ['Authorization', `Bearer ${apiKey}`]
-        if (typeof apiKey.getKey === 'function') {
-          const key = await apiKey.getKey()
-          return ['Authorization', `Bearer ${key}`]
-        }
         throw new Error('Unsupported apiKey for enterprise platform')
       }
     } else if (platform === 'setstore') {
       this.getAuth = async () => {
         if (!apiKey) throw new Error('SetStore API requires an API key')
         if (typeof apiKey === 'string') return ['X-API-Key', apiKey]
-        if (typeof apiKey.getKey === 'function') {
-          const key = await apiKey.getKey()
-          return ['X-API-Key', key]
-        }
         throw new Error('Unsupported apiKey for setstore platform')
       }
     } else {
