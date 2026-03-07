@@ -1,4 +1,6 @@
 # mcsets-js-sdk-client
+[![](https://dcbadge.limes.pink/api/server/mcsets?style=plastic)](https://discord.gg/mcsets)
+
 Library to manage and interact with MCSets API's
 
 ## Installation (NPM)
