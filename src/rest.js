@@ -9,7 +9,7 @@ module.exports = class Rest {
     this.platform = platform
     const hostEntry = constants[platform] || constants.base
     this.host = hostEntry.host
-    this.userAgent = options.userAgent || 'mcsets-js-sdk-client/0.0.0'
+    this.userAgent = options.userAgent || 'mcsets-js-sdk-client/1.0.0'
     this.maxRetries = options.maxRetries ?? 4
 
     if (platform === 'enterprise') {
