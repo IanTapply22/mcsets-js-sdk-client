@@ -51,7 +51,7 @@ module.exports = class Rest {
     const url = `${this.host}${request.route}`
 
     const headers = {
-      'Accept': 'application/json',
+      Accept: 'application/json',
       'User-Agent': this.userAgent
     }
 
