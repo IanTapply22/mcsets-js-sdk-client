@@ -9,9 +9,11 @@ module.exports = class Rest {
     this.platform = platform
     const hostEntry = constants[platform] || constants.base
     this.host = hostEntry.host
-    this.userAgent = options.userAgent || 'mcsets-js-sdk-client/1.0.0'
+    this.userAgent = options.userAgent || 'mcsets-js-sdk-client/1.0.0' // gotcha: bump with version of this package for support
     this.maxRetries = options.maxRetries ?? 4
 
+    // add the proper headers based on the used API. For base API, no auth is required.
+    // see https://docs.mcsets.com/developers/authentication for more information
     if (platform === 'enterprise') {
       this.getAuth = async () => {
         if (!apiKey) throw new Error('Enterprise API requires an API key')
