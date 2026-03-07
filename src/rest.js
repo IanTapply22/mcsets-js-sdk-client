@@ -20,7 +20,7 @@ module.exports = class Rest {
           const key = await apiKey.getKey()
           return ['Authorization', `Bearer ${key}`]
         }
-        throw new Error('Unsupported authSource for enterprise platform')
+        throw new Error('Unsupported apiKey for enterprise platform')
       }
     } else if (platform === 'setstore') {
       this.getAuth = async () => {
@@ -30,7 +30,7 @@ module.exports = class Rest {
           const key = await apiKey.getKey()
           return ['X-API-Key', key]
         }
-        throw new Error('Unsupported authSource for setstore platform')
+        throw new Error('Unsupported apiKey for setstore platform')
       }
     } else {
       this.getAuth = async () => null

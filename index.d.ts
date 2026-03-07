@@ -50,60 +50,60 @@ declare module 'mcsets-js-sdk-client' {
   export class EnterpriseAPI extends MCSetsAPI {
     createCheckoutSession(): Promise<>
     getCheckoutSessions(): Promise<>
-    getCheckoutSession(): Promise<>
-    cancelCheckoutSession(): Promise<>
+    getCheckoutSession(sessionId: string): Promise<>
+    cancelCheckoutSession(sessionId: string): Promise<>
 
     createCheckoutLink(): Promise<>
     getCheckoutLinks(): Promise<>
-    updateCheckoutLink(): Promise<>
-    getCheckoutLink(): Promise<>
-    deactivateCheckoutLink(): Promise<>
+    updateCheckoutLink(linkId: string): Promise<>
+    getCheckoutLink(linkId: string): Promise<>
+    deactivateCheckoutLink(linkId: string): Promise<>
 
     createProduct(): Promise<>
     getProducts(): Promise<>
-    getProduct(): Promise<>
-    updateProduct(): Promise<>
-    deleteProduct(): Promise<>
+    getProduct(productId: string): Promise<>
+    updateProduct(productId: string): Promise<>
+    deleteProduct(productId: string): Promise<>
 
     createPrice(): Promise<>
     getPrices(): Promise<>
-    getPrice(): Promise<>
-    updatePrice(): Promise<>
+    getPrice(priceId: string): Promise<>
+    updatePrice(priceId: string): Promise<>
 
     createCustomer(): Promise<>
     getCustomers(): Promise<>
-    getCustomer(): Promise<>
-    updateCustomer(): Promise<>
-    deleteCustomer(): Promise<>
+    getCustomer(customerId: string): Promise<>
+    updateCustomer(customerId: string): Promise<>
+    deleteCustomer(customerId: string): Promise<>
 
     createRefund(): Promise<>
     getRefunds(): Promise<>
-    getRefund(): Promise<>
+    getRefund(refundId: string): Promise<>
 
     getWebhookEvents(): Promise<>
     createWebhookEndpoint(): Promise<>
     getWebhookEndpoints(): Promise<>
-    getWebhookEndpoint(): Promise<>
-    updateWebhookEndpoint(): Promise<>
-    deleteWebhookEndpoint(): Promise<>
-    rotateWebhookSigningSecret(): Promise<>
+    getWebhookEndpoint(webhookId: string): Promise<>
+    updateWebhookEndpoint(webhookId: string): Promise<>
+    deleteWebhookEndpoint(webhookId: string): Promise<>
+    rotateWebhookSigningSecret(webhookId: string): Promise<>
 
     getAccountStatistics(): Promise<>
 
     createConnectedUser(): Promise<>
     getConnectedUsers(): Promise<>
-    getConnectedUser(): Promise<>
-    updateConnecteduser(): Promise<>
-    deleteConnectedUser(): Promise<>
-    creditConnectedUserBalance(): Promise<>
-    debitConnectedUserBalance(): Promise<>
-    generateConnectedUserLoginLink(): Promise<>
-    payoutConnectedUser(): Promise<>
+    getConnectedUser(connectedUserId: string): Promise<>
+    updateConnecteduser(connectedUserId: string): Promise<>
+    deleteConnectedUser(connectedUserId: string): Promise<>
+    creditConnectedUserBalance(connectedUserId: string): Promise<>
+    debitConnectedUserBalance(connectedUserId: string): Promise<>
+    generateConnectedUserLoginLink(connectedUserId: string): Promise<>
+    payoutConnectedUser(connectedUserId: string): Promise<>
 
     getWithdrawls(): Promise<>
-    getWithdrawl(): Promise<>
-    approveWithdrawlRequest(): Promise<>
-    rejectWithdrawlRequest(): Promise<>
+    getWithdrawl(withdrawlId: string): Promise<>
+    approveWithdrawlRequest(withdrawlId: string): Promise<>
+    rejectWithdrawlRequest(withdrawlId: string): Promise<>
 
     getConnectSettings(): Promise<>
     updateConnectSettings(): Promise<>
