@@ -1,5 +1,7 @@
 # mcsets-js-sdk-client
 [![](https://dcbadge.limes.pink/api/server/mcsets?style=plastic)](https://discord.gg/mcsets)
+[![Publish NPM](https://github.com/IanTapply22/mcsets-js-sdk-client/actions/workflows/publish.yml/badge.svg)](https://github.com/IanTapply22/mcsets-js-sdk-client/actions/workflows/publish.yml)
+[![Test](https://github.com/IanTapply22/mcsets-js-sdk-client/actions/workflows/test.yml/badge.svg)](https://github.com/IanTapply22/mcsets-js-sdk-client/actions/workflows/test.yml)
 
 Library to manage and interact with MCSets API's
 
