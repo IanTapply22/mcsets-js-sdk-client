@@ -6,13 +6,31 @@ declare module 'mcsets-js-sdk-client' {
   }
 
   export class MCSetsAPI {
-    constructor(apiKey: string | null, platform: 'base' | 'setstore' | 'enterprise', options?: Options)
+    constructor(apiKey: string | null, platform: 'base' | 'personal' | 'setstore' | 'enterprise', options?: Options)
 
-    static from(apiKey: string | null, platform: 'base' | 'setstore' | 'enterprise', options?: Options): BaseAPI | SetStoreAPI | EnterpriseAPI
+    static from(apiKey: string | null, platform: 'base' | 'personal' | 'setstore' | 'enterprise', options?: Options): BaseAPI | PersonalAPI | SetStoreAPI | EnterpriseAPI
   }
 
   export class BaseAPI extends MCSetsAPI {
     getHealth(): Promise<Health>
+  }
+
+  export class PersonalAPI extends MCSetsAPI {
+    getProfile(): Promise<DataResponse<Profile>>
+
+    getApiTokens(): Promise<DataResponse<ApiToken[]>>
+    revokeApiToken(tokenId: string): Promise<DataResponse<undefined>>
+
+    getCreditsBalance(): Promise<>
+    getStatistics(): Promise<>
+
+    getProducts(): Promise<>
+    getProduct(productId: string): Promise<>
+    getProductStatistics(productId: string): Promise<>
+
+    getSales(): Promise<>
+    getSalesStatistics(): Promise<>
+    getRecentSales(): Promise<>
   }
 
   export class SetStoreAPI extends MCSetsAPI {
@@ -114,6 +132,22 @@ declare module 'mcsets-js-sdk-client' {
    */
   type ISODateString = string;
 
+  export interface DataResponse<T> {
+    success: boolean,
+    data: T
+  }
+
+  export interface PaginatedDataResponse<T> {
+    success: boolean,
+    data: T[],
+    meta: {
+        current_page: number,
+        last_page: number,
+        per_page: number,
+        total: number
+    }
+  }
+
   /**
    * Base types
    */
@@ -124,26 +158,63 @@ declare module 'mcsets-js-sdk-client' {
   }
 
   /**
+   * Personal types
+   */
+  export interface Profile {
+    id: number,
+    name: string,
+    email: string,
+    avatar: string | null, // TODO: Get proper data type for non-null data
+    banner: string | null, // TODO: Get proper data type for non-null data
+    bio: string | null,
+    credits: number,
+    is_verified: boolean,
+    is_commissioner: boolean,
+    follower_count: number,
+    created_at: ISODateString
+  }
+
+  export interface ApiToken {
+    id: number,
+    name: string,
+    token_preview: string,
+    scopes: string[], // TOOD: Get possible scopes that can be in response
+    discord_user_id: string | null,
+    discord_username: string | null,
+    last_used_at: ISODateString | null,
+    expires_at: ISODateString | null, // TODO: Check if this value can be null
+    created_at: ISODateString
+  }
+
+  export interface CreditsBalance {
+    credits: number,
+    formatted: string
+  }
+
+  export interface AccountStatistics {
+    credits: number,
+    products: {
+      count: number,
+      total_sales: number,
+      total_earnings: number
+    },
+    images: {
+      count: number
+    },
+    commissions: {
+      active: number,
+      completed: number,
+      total_earnings: number
+    }
+  }
+
+  /**
    * SetStore types
    */
 
   /**
    * Enterprise types
    */
-
-  /**
-   * A wrapper interface that intake a data type of T
-   */
-  export interface PaginatedResponse<T> {
-    success: boolean,
-    data: T[],
-    meta: {
-        current_page: number,
-        last_page: number,
-        per_page: number,
-        total: number
-    }
-  }
 
   export default MCSetsAPI
 }

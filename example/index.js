@@ -5,9 +5,12 @@ import dotenv from 'dotenv'
 dotenv.config({ quiet: true })
 
 // Create constants with API keys from ENV vars
+const personalApiKey = process.env.PERSONAL_API_KEY
 const enterpriseApiKey = process.env.ENTERPRISE_API_KEY
 const setStorePluginApiKey = process.env.SETSTORE_PLUGIN_API_KEY
 // const setStoreConnectionApiKey = process.env.SETSTORE_CONNECTION_API_KEY
+
+const personalApi = MCSetsAPI.from(personalApiKey, 'personal')
 
 // Base API required no auth so we will set the key to null
 const baseApi = MCSetsAPI.from(null, 'base')
@@ -22,11 +25,14 @@ const setStorePluginApi = MCSetsAPI.from(setStorePluginApiKey, 'setstore')
  * Example API calls are made below
  */
 
-// Use base API to fetch health status (no auth required)
-await baseApi.getHealth().then(console.log)
+// // Use base API to fetch health status (no auth required)
+// await baseApi.getHealth().then(console.log)
 
-// Use the enterprise API to fetch products (requires enterprise API key, see ENV for key examples)
-await enterpriseApi.getProducts().then(console.log)
+// Use the personal API to fetch the profile of the user that supplied the API token
+await personalApi.getSales().then(console.log)
 
-// Use the set store plugin API to fetch pending delivery commands (requires set store plugin API key, see ENV for key examples)
-await setStorePluginApi.fetchPendingDeliveryCommands().then(console.log)
+// // Use the enterprise API to fetch products (requires enterprise API key, see ENV for key examples)
+// await enterpriseApi.getProducts().then(console.log)
+
+// // Use the set store plugin API to fetch pending delivery commands (requires set store plugin API key, see ENV for key examples)
+// await setStorePluginApi.sendServerHeartbeat().then(console.log)

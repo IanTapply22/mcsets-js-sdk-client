@@ -32,6 +32,12 @@ module.exports = class Rest {
         if (typeof apiKey === 'string') return ['X-API-Key', apiKey]
         throw new Error('Unsupported apiKey for setstore platform')
       }
+    } else if (platform === 'personal') {
+      this.getAuth = async () => {
+        if (!apiKey) throw new Error('Personal API requires an API key')
+        if (typeof apiKey === 'string') return ['Authorization', `Bearer ${apiKey}`]
+        throw new Error('Unsupported apiKey for personal platform')
+      }
     } else {
       this.getAuth = async () => null
     }

@@ -13,6 +13,7 @@ class MCSetsAPI {
   static from (apiKey, platform, options) {
     return new {
       base: require('./base/api'),
+      personal: require('./personal/api'),
       setstore: require('./setstore/api'),
       enterprise: require('./enterprise/api')
     }[platform](apiKey, platform, options)
