@@ -29,4 +29,4 @@ jobs:
       - name: Set package version (optional)
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.version != '' }}
         run: npm version "${{ github.event.inputs.version }}" --no-git-tag-version
-      - run: npm publish --ignore-scripts --provenance --access public
+      - run: npm publish
