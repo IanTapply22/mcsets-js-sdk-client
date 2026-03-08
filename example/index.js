@@ -1,8 +1,8 @@
 import { MCSetsAPI } from 'mcsets-js-sdk-client'
 import dotenv from 'dotenv'
 
-// Inject ENV vars from ENV file 
-dotenv.config({quiet: true})
+// Inject ENV vars from ENV file
+dotenv.config({ quiet: true })
 
 // Create constants with API keys from ENV vars
 const enterpriseApiKey = process.env.ENTERPRISE_API_KEY
@@ -24,7 +24,7 @@ const setStoreConnectionApi = MCSetsAPI.from(setStoreConnectionApiKey, 'setstore
 
 // Use base API to fetch health status (no auth required)
 await baseApi.getHealth().then(console.log)
- 
+
 // Use the enterprise API to fetch products (requires enterprise API key, see ENV for key examples)
 await enterpriseApi.getProducts().then(console.log)
 
