@@ -144,4 +144,6 @@ declare module 'mcsets-js-sdk-client' {
         total: number
     }
   }
+
+  export default MCSetsAPI
 }

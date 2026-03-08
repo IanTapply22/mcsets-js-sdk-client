@@ -1,0 +1,16 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "An example project using the MCSets JS SDK client.",
+  "license": "MIT",
+  "author": "Ian Tapply",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "mcsets-js-sdk-client": "file:../"
+  }
+}

@@ -1,5 +1,11 @@
 const debug = require('debug')('mcsets-js-sdk-client')
-const fetch = require('node-fetch')
+
+let fetch
+try {
+  fetch = globalThis.fetch || require('node-fetch')
+} catch (e) {
+  throw new Error('Fetch API is not available. Please ensure you are running in an environment with fetch support or install node-fetch for Node.js environments.')
+}
 
 const constants = require('./constants')
 

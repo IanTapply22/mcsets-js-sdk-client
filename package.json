@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "description": "Library to manage and interact with MCSets API's",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "mocha --recursive --reporter spec --exit",
     "pretest": "npm run lint",
