@@ -9,7 +9,7 @@ module.exports = class Rest {
     this.platform = platform
     const hostEntry = constants[platform] || constants.base
     this.host = hostEntry.host
-    this.userAgent = options.userAgent || 'mcsets-js-sdk-client/1.0.0' // gotcha: bump with version of this package for support
+    this.userAgent = options.userAgent || 'mcsets-js-sdk-client/1.0.1' // gotcha: bump with version of this package for support
     this.maxRetries = options.maxRetries ?? 4
 
     // add the proper headers based on the used API. For base API, no auth is required.
