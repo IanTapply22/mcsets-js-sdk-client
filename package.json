@@ -1,6 +1,6 @@
 {
   "name": "mcsets-js-sdk-client",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Library to manage and interact with MCSets API's",
   "main": "index.js",
   "types": "index.d.ts",
