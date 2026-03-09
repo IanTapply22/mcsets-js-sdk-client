@@ -21,8 +21,8 @@ declare module 'mcsets-js-sdk-client' {
     getApiTokens(): Promise<DataResponse<ApiToken[]>>
     revokeApiToken(tokenId: string): Promise<DataResponse<undefined>>
 
-    getCreditsBalance(): Promise<>
-    getStatistics(): Promise<>
+    getCreditsBalance(): Promise<DataResponse<CreditsBalance>>
+    getStatistics(): Promise<DataResponse<AccountStatistics>>
 
     getProducts(): Promise<>
     getProduct(productId: string): Promise<>
@@ -36,7 +36,7 @@ declare module 'mcsets-js-sdk-client' {
   export class SetStoreAPI extends MCSetsAPI {
     registerGameServerConnection(): Promise<>
 
-    fetchPendingDeliveryCommands(): Promise<>
+    fetchPendingDeliveryCommands(): Promise<CommandDelivery>
     deliverCommand(): Promise<>
 
     setOnlinePlayers(): Promise<>
@@ -211,6 +211,16 @@ declare module 'mcsets-js-sdk-client' {
   /**
    * SetStore types
    */
+
+  export interface CommandDelivery {
+    success: boolean,
+    deliveries: Delivery[],
+    count: number
+  }
+
+  export interface Delivery {
+    // TODO: Get proper data structure of command deliveries
+  }
 
   /**
    * Enterprise types

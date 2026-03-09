@@ -7,6 +7,11 @@ module.exports = class SetStoreAPI extends MCSetsAPI {
     return await this.rest.post('/connect')
   }
 
+  /**
+   * Gets the pending delivery commands that still need to be executed
+   * for the specified set store after purchases.
+   * @returns {Promise<import('mcsets-js-sdk-client').CommandDelivery>}
+   */
   async fetchPendingDeliveryCommands () {
     return await this.rest.get('/queue')
   }

@@ -26,13 +26,13 @@ const setStorePluginApi = MCSetsAPI.from(setStorePluginApiKey, 'setstore')
  */
 
 // // Use base API to fetch health status (no auth required)
-// await baseApi.getHealth().then(console.log)
+await baseApi.getHealth().then(console.log)
 
 // Use the personal API to fetch the profile of the user that supplied the API token
-await personalApi.getSales().then(console.log)
+await personalApi.getProfile().then(console.log)
 
 // // Use the enterprise API to fetch products (requires enterprise API key, see ENV for key examples)
-// await enterpriseApi.getProducts().then(console.log)
+await enterpriseApi.getProducts().then(console.log)
 
 // // Use the set store plugin API to fetch pending delivery commands (requires set store plugin API key, see ENV for key examples)
-// await setStorePluginApi.sendServerHeartbeat().then(console.log)
+await setStorePluginApi.fetchPendingDeliveryCommands().then(console.log)
